@@ -42,6 +42,7 @@ const ListStudentComponent = (props) => {
                 <table className="table table-striped table-bordered">
                     <thead>
                     <tr>
+
                         <th>Student Name</th>
                         <th>Student Address</th>
                         <th>Student Email Id</th>
