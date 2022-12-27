@@ -6,15 +6,11 @@ class CreateStudentComponent extends Component {
         super(props)
 
         this.state = {
-            // step 2
-            id: this.props.match.params.id,
-            firstName: '',
-            lastName: '',
-            emailId: ''
+            students: []
         }
-        this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
-        this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
-        this.saveOrUpdateEmployee = this.saveOrUpdateEmployee.bind(this);
+        this.addStudent = this.addStudent.bind(this);
+        this.editStudent = this.editStudent.bind(this);
+        this.deleteStudent = this.deleteStudent.bind(this);
     }
 
     // step 3
