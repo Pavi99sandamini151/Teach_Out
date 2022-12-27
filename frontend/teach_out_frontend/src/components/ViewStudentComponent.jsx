@@ -1,46 +1,38 @@
-import React, { Component } from 'react'
-import StudentService from "../services/StudentService";
+import React, { useState, useEffect } from 'react';
+import StudentService from '../services/StudentService';
 
-class ViewStudentComponent extends Component {
-    constructor(props) {
-        super(props)
+const ViewStudentComponent = (props) => {
+    const [student, setStudent] = useState({});
+    const id = props.match.params.id;
 
-        this.state = {
-            id: this.props.match.params.id,
-            employee: {}
-        }
-    }
+    useEffect(() => {
+        StudentService.getStudentById(id).then((res) => {
+            setStudent(res.data);
+        });
+    }, [id]);
 
-    componentDidMount(){
-        StudentService.getStudentById(this.state.id).then( res => {
-            this.setState({student: res.data});
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <br></br>
-                <div className = "card col-md-6 offset-md-3">
-                    <h3 className = "text-center"> View Student Details</h3>
-                    <div className = "card-body">
-                        <div className = "row">
-                            <label> Student Name: </label>
-                            <div> { this.state.student.name }</div>
-                        </div>
-                        <div className = "row">
-                            <label> Student Address: </label>
-                            <div> { this.state.student.address }</div>
-                        </div>
-                        <div className = "row">
-                            <label> Student Email ID: </label>
-                            <div> { this.state.student.emailId }</div>
-                        </div>
+    return (
+        <div>
+            <br />
+            <div className="card col-md-6 offset-md-3">
+                <h3 className="text-center"> View Student Details</h3>
+                <div className="card-body">
+                    <div className="row">
+                        <label>Student Name: </label>
+                        <div>{student.name}</div>
+                    </div>
+                    <div className="row">
+                        <label>Student Address: </label>
+                        <div>{student.address}</div>
+                    </div>
+                    <div className="row">
+                        <label>Student Email ID: </label>
+                        <div>{student.emailId}</div>
                     </div>
                 </div>
             </div>
-        )
-    }
-}
+        </div>
+    );
+};
 
-export default ViewStudentComponent
+export default ViewStudentComponent;

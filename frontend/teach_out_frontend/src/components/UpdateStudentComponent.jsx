@@ -1,58 +1,48 @@
-import React, { Component } from 'react'
-import StudentService from "../services/StudentService";
+import React, { useState, useEffect } from 'react';
+import StudentService from '../services/StudentService';
 
-class UpdateStudentComponent extends Component {
-    constructor(props) {
-        super(props)
+const UpdateStudentComponent = (props) => {
+    const [student, setStudent] = useState({
+        name: '',
+        address: '',
+        emailId: '',
+    });
+    const id = props.match.params.id;
 
-        this.state = {
-            id: this.props.match.params.id,
-            name: '',
-            address: '',
-            emailId: ''
-        }
-        this.changeNameHandler = this.changeNameHandler.bind(this);
-        this.changeAddressHandler = this.changeAddressHandler.bind(this);
-        this.updateStudent = this.updateStudent.bind(this);
-    }
-
-    componentDidMount(){
-        StudentService.getStudentById(this.state.id).then( (res) =>{
-            let student = res.data;
-            this.setState({name: student.name,
-                address: student.address,
-                emailId : student.emailId
-            });
+    useEffect(() => {
+        StudentService.getStudentById(id).then((res) => {
+            setStudent(res.data);
         });
-    }
+    }, [id]);
 
-    updateStudent = (e) => {
-        e.preventDefault();
-        let student = {name: this.state.name, address: this.state.address, emailId: this.state.emailId};
-        console.log('student => ' + JSON.stringify(student));
-        console.log('id => ' + JSON.stringify(this.state.id));
-        StudentService.updateStudent(student, this.state.id).then( res => {
-            this.props.history.push('/employees');
+    const updateStudent = (event) => {
+        event.preventDefault();
+        const studentData = {
+            name: student.name,
+            address: student.address,
+            emailId: student.emailId,
+        };
+        StudentService.updateStudent(studentData, id).then(() => {
+            props.history.push('/students');
         });
-    }
+    };
 
-    changeNameHandler= (event) => {
-        this.setState({name: event.target.value});
-    }
+    const changeNameHandler = (event) => {
+        setStudent({ ...student, name: event.target.value });
+    };
 
-    changeAddressHandler= (event) => {
-        this.setState({lastName: event.target.value});
-    }
+    const changeAddressHandler = (event) => {
+        setStudent({ ...student, address: event.target.value });
+    };
 
-    changeEmailHandler= (event) => {
-        this.setState({emailId: event.target.value});
-    }
+    const changeEmailHandler = (event) => {
+        setStudent({ ...student, emailId: event.target.value });
+    };
 
-    cancel(){
-        this.props.history.push('/employees');
-    }
+    const cancel = () => {
+        props.history.push('/students');
+    };
 
-    render() {
         return (
             <div>
                 <br></br>
@@ -88,7 +78,6 @@ class UpdateStudentComponent extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default UpdateStudentComponent
