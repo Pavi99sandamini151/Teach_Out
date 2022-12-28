@@ -11,7 +11,7 @@ class UpdateStudentComponent extends Component {
             address: '',
             emailId: ''
         }
-        this.changeNameHandler = this.changeNameHandler.bind(this);
+        this.changeStudentNameHandler = this.changeStudentNameHandler.bind(this);
         this.changeAddressHandler = this.changeAddressHandler.bind(this);
         this.updateStudent = this.updateStudent.bind(this);
     }
@@ -32,16 +32,16 @@ class UpdateStudentComponent extends Component {
         console.log('student => ' + JSON.stringify(student));
         console.log('id => ' + JSON.stringify(this.state.id));
         StudentService.updateStudent(student, this.state.id).then( res => {
-            this.props.history.push('/employees');
+            this.props.history.push('/student');
         });
     }
 
-    changeNameHandler= (event) => {
+    changeStudentNameHandler= (event) => {
         this.setState({name: event.target.value});
     }
 
     changeAddressHandler= (event) => {
-        this.setState({lastName: event.target.value});
+        this.setState({address: event.target.value});
     }
 
     changeEmailHandler= (event) => {
@@ -49,7 +49,7 @@ class UpdateStudentComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/employees');
+        this.props.history.push('/students');
     }
 
     render() {
@@ -65,16 +65,16 @@ class UpdateStudentComponent extends Component {
                                     <div className = "form-group">
                                         <label> Student Name: </label>
                                         <input placeholder="Student Name" name="name" className="form-control"
-                                               value={this.state.name} onChange={this.changeNameHandler}/>
+                                               value={this.state.name} onChange={this.changeStudentNameHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Student Address: </label>
-                                        <input placeholder="Student address" name="address" className="form-control"
+                                        <input placeholder="Student Address" name="address" className="form-control"
                                                value={this.state.address} onChange={this.changeAddressHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label> Email Id: </label>
-                                        <input placeholder="Student Email Address" name="emailId" className="form-control"
+                                        <input placeholder="Email Address" name="emailId" className="form-control"
                                                value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                     </div>
 

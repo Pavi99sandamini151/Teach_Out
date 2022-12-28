@@ -8,13 +8,13 @@ class CreateStudentComponent extends Component {
         this.state = {
             // step 2
             id: this.props.match.params.id,
-            firstName: '',
-            lastName: '',
+            name: '',
+            address: '',
             emailId: ''
         }
-        this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
-        this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
-        this.saveOrUpdateEmployee = this.saveOrUpdateEmployee.bind(this);
+        this.changeStudentNameHandler = this.changeStudentNameHandler.bind(this);
+        this.changeAddressHandler = this.changeAddressHandler.bind(this);
+        this.saveOrUpdateStudent = this.saveOrUpdateStudent.bind(this);
     }
 
     // step 3
@@ -41,11 +41,11 @@ class CreateStudentComponent extends Component {
         // step 5
         if(this.state.id === '_add'){
             StudentService.createStudent(student).then(res =>{
-                this.props.history.push('/employees');
+                this.props.history.push('/students');
             });
         }else{
             StudentService.updateStudent(student, this.state.id).then( res => {
-                this.props.history.push('/employees');
+                this.props.history.push('/students');
             });
         }
     }
@@ -63,7 +63,7 @@ class CreateStudentComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/employees');
+        this.props.history.push('/students');
     }
 
     getTitle(){
@@ -101,7 +101,7 @@ class CreateStudentComponent extends Component {
                                                value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                     </div>
 
-                                    <button className="btn btn-success" onClick={this.saveOrUpdateEmployee}>Save Student</button>
+                                    <button className="btn btn-success" onClick={this.saveOrUpdateStudent}>Save Student</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                 </form>
                             </div>

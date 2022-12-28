@@ -7,7 +7,7 @@ class ViewStudentComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            employee: {}
+            student: {}
         }
     }
 
@@ -25,18 +25,19 @@ class ViewStudentComponent extends Component {
                     <h3 className = "text-center"> View Student Details</h3>
                     <div className = "card-body">
                         <div className = "row">
-                            <label> Student Name: </label>
+                            <label> Employee First Name: </label>
                             <div> { this.state.student.name }</div>
                         </div>
                         <div className = "row">
-                            <label> Student Address: </label>
+                            <label> Employee Last Name: </label>
                             <div> { this.state.student.address }</div>
                         </div>
                         <div className = "row">
-                            <label> Student Email ID: </label>
+                            <label> Employee Email ID: </label>
                             <div> { this.state.student.emailId }</div>
                         </div>
                     </div>
+
                 </div>
             </div>
         )

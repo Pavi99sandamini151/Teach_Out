@@ -16,7 +16,7 @@ class StudentService {
         return axios.get(STUDENT_API_BASE_URL + '/' + studentId);
     }
 
-    updateEmployee(student, studentId){
+    updateStudent(student, studentId){
         return axios.put(STUDENT_API_BASE_URL + '/' + studentId, student);
     }
 
