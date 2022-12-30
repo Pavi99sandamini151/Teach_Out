@@ -79,30 +79,39 @@ class CreateStudentComponent extends Component {
                 <br></br>
                 <div className = "container">
                     <div className = "row">
-                        <div className = "card col-md-6 offset-md-3 offset-md-3">
-                            {
-                                this.getTitle()
-                            }
+                        <div className = "card col-md-6 offset-md-3 offset-md-3 pt-5 shadow">
+                            <div className="pb-4">
+                                {
+                                    this.getTitle()
+                                }
+                            </div>
                             <div className = "card-body">
                                 <form>
-                                    <div className = "form-group">
+                                    <div className = "form-group p-3">
                                         <label> Student Name: </label>
                                         <input placeholder="Student Name" name="name" className="form-control"
                                                value={this.state.name} onChange={this.changeStudentNameHandler}/>
                                     </div>
-                                    <div className = "form-group">
+                                    <div className = "form-group p-3">
                                         <label> Student Address: </label>
                                         <input placeholder="Last Name" name="address" className="form-control"
                                                value={this.state.address} onChange={this.changeAddressHandler}/>
                                     </div>
-                                    <div className = "form-group">
+                                    <div className = "form-group p-3">
                                         <label> Email Id: </label>
                                         <input placeholder="Student Email Address" name="emailId" className="form-control"
                                                value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                     </div>
-
-                                    <button className="btn btn-success" onClick={this.saveOrUpdateStudent}>Save Student</button>
-                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
+                                    <div className="form-group p-3 flex-box justify-content-between">
+                                        <button className="btn btn-success" onClick={this.saveOrUpdateStudent}
+                                         style={{fontWeight:'bold'}}>
+                                            Save Student
+                                        </button>
+                                        <button className="btn btn-danger" onClick={this.cancel.bind(this)}
+                                         style={{marginLeft: "10px", fontWeight:'bold'}}>
+                                            Cancel
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
