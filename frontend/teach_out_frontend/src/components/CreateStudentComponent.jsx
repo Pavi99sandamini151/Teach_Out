@@ -97,7 +97,7 @@ class CreateStudentComponent extends Component {
                                     </div>
                                     <div className = "form-group">
                                         <label> Email Id: </label>
-                                        <input placeholder="Student Email Address" name="emailId" className="form-control"
+                                        <input placeholder="Students Email Address" name="emailId" className="form-control"
                                                value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                     </div>
 
