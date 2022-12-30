@@ -29,34 +29,29 @@ const ListStudentComponent = (props) => {
     };
 
     return (
-        <div>
-            <h2 className="text-center">Students List</h2>
+        <div className="pt-4">
+            <h2 className="text-center pt-3 pb-5">Students List</h2>
             <div className="row">
-                <button className="btn btn-primary" onClick={addStudent}>
-                    {' '}
-                    Add Student
-                </button>
-            </div>
-            <br />
-            <div className="row">
-                <table className="table table-striped table-bordered">
+                <table className="table table-striped table-bordered p-3">
                     <thead>
                     <tr>
-
-                        <th>Student Name</th>
-                        <th>Student Address</th>
-                        <th>Student Email Id</th>
-                        <th>Actions</th>
+                        <th className="text-center p-4">Student Name</th>
+                        <th className="text-center p-4">Student Address</th>
+                        <th className="text-center p-4">Student Email Id</th>
+                        <th className="text-center p-4">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     {students.map((student) => (
                         <tr key={student.id}>
-                            <td>{student.name}</td>
-                            <td>{student.address}</td>
-                            <td>{student.emailId}</td>
-                            <td>
-                                <button onClick={() => editStudent(student.id)} className="btn btn-info">
+                            <td className="text-center p-2">{student.name}</td>
+                            <td className="text-center p-2">{student.address}</td>
+                            <td className="text-center p-2">{student.emailId}</td>
+                            <td className="text-center p-2">
+                                <button
+                                    onClick={() => editStudent(student.id)}
+                                    className="btn btn-warning"
+                                >
                                     Update{' '}
                                 </button>
                                 <button
@@ -78,6 +73,12 @@ const ListStudentComponent = (props) => {
                     ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="row">
+                <button className="btn btn-success mb-5" style={{fontWeight:'bold',width:"10%"}} onClick={addStudent}>
+                    {' '}
+                    Add Student
+                </button>
             </div>
         </div>
     );
